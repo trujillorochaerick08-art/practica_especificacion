@@ -20,15 +20,22 @@ necesita calcular el importe del recibo a partir del consumo del mes.
 # - Cada decisión que el enunciado no aclaraba y cómo se resolvió. 
  
 # ALGORITMO 
-# 1. Leer ... 
-# 2. Si ... : 
-#       resultado = ... 
-# 3. En caso contrario: 
-#       resultado = ... 
-# 4. Mostrar ... 
+# 1. Leer consumo  
+# 2. Si consumo <= 150: 
+#       importe_recibo = consumo * 1.00
+# 3. En caso contrario, si consumo <= 280:
+#       importe_recibo = consumo * 1.50
+# 4. En caso contrario:
+#       importe_recibo = consumo * 3.00
+# 4. Mostrar resultado
  
 # CASOS DE PRUEBA 
-# entrada(s) -> salida esperada 
+#caso 1: consumo = 100 -> importe_recibo = 100.00
+#caso 2: consumo = 150 -> importe_recibo = 300.00
+#caso 3: consumo = 200 -> importe_recibo = 300.00
+#caso 4: consumo = 280 -> importe_recibo = 420.00
+#caso 5: consumo = 300 -> importe_recibo = 900.00
+
  
 # RESTRICCIONES PARA EL AGENTE 
 # - Implementa exactamente este algoritmo, en el mismo orden. 
@@ -38,6 +45,24 @@ necesita calcular el importe del recibo a partir del consumo del mes.
 # - No llames a las funciones en este archivo; se llaman desde menu/menu.py. 
  
 # CONTRATO DE FUNCIONES 
-# nombreFuncion(parametro1, parametro2) -> valor_retorno : qué hace. 
- 
+# leerConsumo() -> consumo : lee el consumo del mes en kWh.
+# calcularImporte(consumo) -> importe_recibo : calcula el importe del recibo a partir del consumo.
+# mostrarResultado(importe_recibo) : muestra el resultado.
+
 # Implementa el algoritmo anterior utilizando las funciones del contrato.
+
+def leerConsumo():
+    consumo = float(input("Ingrese el consumo del mes en kWh: "))
+    return consumo
+
+def calcularImporte(consumo):
+    if consumo <= 150:
+        importe_recibo = consumo * 1.00
+    elif consumo <= 280:
+        importe_recibo = consumo * 1.50
+    else:
+        importe_recibo = consumo * 3.00
+    return importe_recibo
+
+def mostrarResultado(importe_recibo):
+    print("El importe del recibo es: ${:.2f}".format(importe_recibo))
